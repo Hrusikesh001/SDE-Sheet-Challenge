@@ -20,15 +20,20 @@
 
 public class Find_Duplicate_Number_01 {
     public int findDuplicate(int[] nums) {
-        int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (nums[i] == nums[j]) {
-                    return nums[i];
-                }
-            }
+        int s = 0, f = 0;
+        while (true) {
+            int val = nums[f];
+            f = nums[val];
+            s = nums[s];
+            if (f == s)
+                break;
         }
-        return -1;
+        s = 0;
+        while (s != f) {
+            s = nums[s];
+            f = nums[f];
+        }
+        return s;
     }
     public static void main(String[] args) {
         Find_Duplicate_Number_01 solution = new Find_Duplicate_Number_01();
